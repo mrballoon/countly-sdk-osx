@@ -15,7 +15,7 @@ Countly OSX SDK includes necessary tools to track your application. In order to 
 3. import `Countly.h` and add the line;
 `[[Countly sharedInstance] start:@"YOUR_APP_KEY" withHost:@"http://YOUR_API_HOST.com"];` where you want to start getting stats
 
-**Note:** if you use Countly Cloud, you must set withHost parameter to http://cloud.count.ly for step 10.
+**Note:** if you use Countly Cloud, you must set withHost parameter to http://cloud.count.ly for step 3.
 
 It should finally look like this:
 
