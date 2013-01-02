@@ -96,6 +96,7 @@
 
 + (NSString *)device
 {
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
     size_t size;
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
     char *machine = malloc(size);
@@ -103,6 +104,9 @@
     NSString *platform = [NSString stringWithUTF8String:machine];
     free(machine);
     return platform;
+#else
+    return @"Mac";
+#endif
 }
 
 + (NSString *)osVersion
@@ -151,7 +155,7 @@
     for (; index < screenCount; index++)
     {
         NSScreen *screen = [screenArray objectAtIndex: index];
-        screenRect = [screen visibleFrame];
+        screenRect = [screen frame];
     }
     
     return [NSString stringWithFormat:@"%.1fx%.1f",screenRect.size.width, screenRect.size.height];
